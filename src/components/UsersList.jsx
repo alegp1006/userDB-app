@@ -44,15 +44,15 @@ export function UserList({ users, showColors, handleDelete, sortBy }) {
           return (
             <tr key={index} style={{ backgroundColor: color }}>
               <td data-testing="user-img">
-                <img src={user.picture.thumbnail} alt={user.name.first} />
+                <img src={user.picture} alt={user.name} />
               </td>
-              <td data-testing="user-name">{user.name.first}</td>
-              <td data-testing="user-lastName">{user.name.last}</td>
-              <td data-testing="user-country">{user.location.country}</td>
+              <td data-testing="user-name">{user.name}</td>
+              <td data-testing="user-lastName">{user.name}</td>
+              <td data-testing="user-country">{user.country}</td>
               <td data-testing="user-delete-button">
                 <button
                   onClick={() => {
-                    handleDelete(user.login.uuid);
+                    handleDelete(user.loginID);
                   }}>
                   borrar
                 </button>
