@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { useFilterCountry } from "./useFilterCountry";
 import { Users } from "../models/users";
 
 export function useSortByCountry(user: Users[]) {

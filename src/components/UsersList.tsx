@@ -1,4 +1,13 @@
-export function UserList({ users, showColors, handleDelete, sortBy }) {
+import { Users } from "../models/users";
+
+interface Props {
+  users: Users[];
+  showColors: boolean;
+  handleDelete: (id: string) => void;
+  sortBy: (value: string) => void;
+}
+
+export function UserList({ users, showColors, handleDelete, sortBy }: Props) {
   return (
     <table>
       <thead>
@@ -8,7 +17,6 @@ export function UserList({ users, showColors, handleDelete, sortBy }) {
             style={{
               cursor: "pointer",
             }}
-            value="nombre"
             onClick={() => {
               sortBy("name");
             }}>
@@ -18,7 +26,6 @@ export function UserList({ users, showColors, handleDelete, sortBy }) {
             style={{
               cursor: "pointer",
             }}
-            value="last-name"
             onClick={() => {
               sortBy("last-name");
             }}>
@@ -28,7 +35,6 @@ export function UserList({ users, showColors, handleDelete, sortBy }) {
             style={{
               cursor: "pointer",
             }}
-            value="country"
             onClick={() => {
               sortBy("country");
             }}>
@@ -38,7 +44,7 @@ export function UserList({ users, showColors, handleDelete, sortBy }) {
         </tr>
       </thead>
       <tbody>
-        {users.map((user, index) => {
+        {users.map((user: Users, index: number) => {
           const backgroundColor = index % 2 === 0 ? "#333" : "#555";
           const color = showColors ? backgroundColor : "transparent";
           return (

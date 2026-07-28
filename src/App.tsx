@@ -17,7 +17,7 @@ function App() {
     useSortByCountry(filteredUser);
   const { handleSort, sortedUserByValue } = useSortBy(sortedUser);
 
-  const handleDelete = (id) => {
+  const handleDelete = (id: string) => {
     const filteredUser = user.filter((u) => {
       return u.loginID !== id;
     });
@@ -34,7 +34,7 @@ function App() {
         content={sortByCountry ? "Desordenar por pais" : "ordenar por pais"}
       />
       <Button onClick={handleReset} content={"restablecer lista"} />
-      <Input value={filterCountry} setValue={setFilterCountry} />
+      <Input value={filterCountry ?? ""} setValue={setFilterCountry} />
       <UserList
         sortBy={handleSort}
         handleDelete={handleDelete}
