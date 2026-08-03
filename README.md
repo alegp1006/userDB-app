@@ -1,42 +1,69 @@
----
-🟢 Básico (funcionalidad esencial)
-1. Abrir la app y verificar que la tabla se renderiza con 100 usuarios. ✅
-2. Validar que cada fila muestra nombre, país y demás datos esperados.
-3. Comprobar que las filas tienen colores alternos (ej. zebra striping).
-4. Hacer clic en el encabezado “País” y confirmar que la tabla se ordena.
-5. Buscar un país específico en el filtro y validar que solo aparecen usuarios de ese país.
-6. Eliminar una fila y confirmar que desaparece de la tabla.
-7. Restaurar el estado inicial y validar que vuelven los 100 usuarios.
----
+# Base de datos de usuarios
 
-🟡 Intermedio (flujo y lógica) 8. Ordenar por país y verificar que el orden es alfabético ascendente.  
-9. Ordenar dos veces y confirmar que cambia a descendente.  
-10. Filtrar por un país inexistente y validar que la tabla queda vacía.  
-11. Eliminar varias filas y comprobar que el contador de usuarios se actualiza.  
-12. Restaurar después de múltiples eliminaciones y validar que todo vuelve al inicio.  
-13. Probar que el filtro no afecta al orden actual de la tabla.  
-14. Validar que el input de filtro mantiene el valor tras aplicar búsqueda.
+## Descripción
 
----
+Esta aplicación muestra una tabla interactiva con datos de usuarios obtenidos desde la API pública `randomuser.me`. El objetivo es proporcionar una interfaz web clara para filtrar, ordenar, borrar y restaurar una lista de usuarios en tiempo real.
 
-🔴 Avanzado (robustez y edge cases) 15. Simular fallo de la API y comprobar que se muestra mensaje de error.  
-16. Probar que al recargar la página se vuelve a cargar la tabla inicial.  
-17. Validar que el orden se mantiene tras aplicar un filtro.  
-18. Filtrar y luego eliminar filas, confirmar que ambas acciones se combinan correctamente.  
-19. Restaurar después de aplicar filtro y validar que se muestran los 100 usuarios.  
-20. Probar que el ordenamiento funciona con países con caracteres especiales (ej. “España”).  
-21. Validar que la app no se rompe si la API devuelve menos de 100 usuarios.
+## Qué hace
 
----
+- Carga una lista de 100 usuarios usando `fetch` desde `https://randomuser.me/api/?results=100`.
+- Muestra cada usuario con foto, nombre, apellido y país en una tabla.
+- Permite ordenar la tabla por nombre, apellido o país haciendo clic en los encabezados.
+- Incluye un filtro por país que actualiza los resultados en vivo.
+- Permite borrar filas individuales y restaurar la lista original con un botón.
+- Ofrece una opción para alternar colores de fila y mejorar la legibilidad.
 
-🚀 Experto (flujo completo y accesibilidad) 22. Simular flujo completo: cargar → ordenar → filtrar → eliminar → restaurar.  
-23. Validar que la tabla se renderiza en menos de X segundos (performance).  
-24. Probar que los encabezados de la tabla tienen roles accesibles (aria-sort).  
-25. Navegar con teclado (Tab/Enter) y confirmar que se puede ordenar sin mouse.  
-26. Validar que los mensajes de error son legibles por screen readers.  
-27. Probar que el layout de la tabla se adapta en pantallas pequeñas (responsive).  
-28. Simular múltiples usuarios cargando la app al mismo tiempo (concurrent requests).  
-29. Validar que no se hacen llamadas duplicadas a la API al recargar rápido.  
-30. Probar que se puede copiar el nombre de un usuario desde la tabla (usabilidad).
+## Arquitectura y técnicas aplicadas
 
----
+- React + TypeScript: aplicación SPA tipada con componentes funcionales.
+- Vite: bundler moderno para desarrollo rápido y despliegue eficiente.
+- Custom hooks: lógica separada en hooks reutilizables para:
+  - obtener usuarios (`useUsers`)
+  - filtrar por país (`useFilterCountry`)
+  - ordenar por país (`useSortByCountry`)
+  - ordenar por valor dinámico (`useSortBy`)
+  - alternar estilos de fila (`useSwitchColors`)
+- `useMemo`: memoización para evitar cálculos innecesarios durante filtrado y ordenamiento.
+- `useEffect`: fetch de datos al montar el componente principal.
+- `useRef`: conserva el estado original de la lista para restauraciones sin recargar la página.
+- Componentización: separación de la lógica de presentación y de datos en `Button`, `Input` y `UsersList`.
+- Manejo de estado con `useState` y control de errores en peticiones asíncronas.
+
+## Recursos utilizados
+
+- `React 19` y `ReactDOM`.
+- `TypeScript 7` para seguridad de tipos en toda la aplicación.
+- `Vite` como herramienta de construcción y servidor de desarrollo.
+- `ESLint` con configuración básica para mantener calidad de código.
+- API pública `randomuser.me` para obtener datos reales de usuarios de ejemplo.
+- CSS global sencillo en `src/App.css` y `src/index.css` sin dependencias de CSS frameworks externos.
+
+## Estructura principal
+
+- `src/App.tsx`: componente principal que orquesta filtros, ordenamiento y acciones.
+- `src/components/UsersList.tsx`: tabla de visualización de usuarios.
+- `src/components/Button.tsx`: botón reutilizable.
+- `src/components/Input.tsx`: campo de texto controlado.
+- `src/hooks/useUsers.ts`: fetch, estado de usuario y restauración.
+- `src/hooks/useFilterCountry.ts`: lógica de filtrado por país.
+- `src/hooks/useSortByCountry.ts`: ordenamiento por país.
+- `src/hooks/useSortBy.ts`: ordenamiento por nombre/apellido/país según input.
+- `src/hooks/useSwitchColors.ts`: activar/desactivar colores en filas.
+- `src/services/users.ts`: capa de servicio para la llamada a la API.
+- `src/models/users.ts`: definición del tipo `Users`.
+
+## Cómo correr el proyecto
+
+1. Instalar dependencias:
+   ```bash
+   pnpm install
+   ```
+2. Iniciar en modo desarrollo:
+   ```bash
+   pnpm dev
+   ```
+3. Abrir el navegador en la URL que indique Vite.
+
+## Valor para reclutadores
+
+Este proyecto demuestra habilidades prácticas en React y TypeScript, capacidad para diseñar una UI interactiva con filtros y ordenamiento, y buenas prácticas al separar responsabilidades mediante hooks y servicios.
