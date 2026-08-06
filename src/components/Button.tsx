@@ -1,8 +1,10 @@
+import { ReactNode } from "react";
+
 interface Props {
   onClick: () => void;
-  content: string;
+  children: ReactNode;
 }
 
-export function Button({ onClick, content }: Props) {
-  return <button onClick={onClick}>{content}</button>;
+export function Button({ onClick, children }: Props) {
+  return <button onClick={onClick}>{children}</button>;
 }
