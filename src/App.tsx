@@ -7,7 +7,7 @@ import { useFilterCountry } from "./hooks/useFilterCountry";
 import { useSortBy } from "./hooks/useSortBy";
 import { Button } from "./components/Button";
 import { Input } from "./components/Input";
-import { Paint, Restore, World } from "./components/Icons";
+import { Paint, Restore, UpDownArrow, World } from "./components/Icons";
 
 function App() {
   const { user, setUser, handleReset } = useUsers();
@@ -26,33 +26,38 @@ function App() {
   };
 
   return (
-    <>
+    <main className="main">
       <h1>Base de datos de Usuarios</h1>
+      <header className="header">
+        <Input value={filterCountry ?? ""} setValue={setFilterCountry} />
+        <Button onClick={toogleColors}>
+          <div className="button-color">
+            <Paint width="24px" height="24px" />
+            <p>colorear filas</p>
+          </div>
+        </Button>
+        <Button onClick={toogleSortByCountry}>
+          <div className="button-country">
+            <UpDownArrow />
+            <p>{sortByCountry ? "Desordenar por pais" : "ordenar por pais"}</p>
+            <World />
+          </div>
+        </Button>
+        <Button onClick={handleReset}>
+          <div className="button-reset">
+            <Restore />
+            <p>restablecer lista</p>
+          </div>
+        </Button>
+      </header>
 
-      <Button onClick={toogleColors}>
-        <div>
-          <Paint width="20px" height="20px" />
-          <p>colorear filas</p>
-        </div>
-      </Button>
-      <Button onClick={toogleSortByCountry}>
-        {sortByCountry ? "Desordenar por pais" : "ordenar por pais"}
-        <World />
-      </Button>
-      <Button onClick={handleReset}>
-        <div>
-          <Restore />
-          <p>restablecer lista</p>
-        </div>
-      </Button>
-      <Input value={filterCountry ?? ""} setValue={setFilterCountry} />
       <UserList
         sortBy={handleSort}
         handleDelete={handleDelete}
         showColors={showColors}
         users={sortedUserByValue}
       />
-    </>
+    </main>
   );
 }
 

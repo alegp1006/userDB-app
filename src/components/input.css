@@ -1,0 +1,23 @@
+.label {
+  cursor: text;
+  display: flex;
+  gap: 8px;
+  justify-content: start;
+  padding: 6px 8px;
+  border: 1px solid #555;
+  box-shadow: 0 0 4px #555;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.label:hover {
+  border-color: #777;
+  box-shadow: 0 0 4px #777;
+}
+
+.input,
+.input:hover {
+  border: none;
+  outline: none;
+  background-color: inherit;
+}

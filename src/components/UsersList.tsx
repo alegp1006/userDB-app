@@ -1,4 +1,7 @@
 import { Users } from "../models/users";
+import { Button } from "./Button";
+import { Trash } from "./Icons";
+import "./userList.css";
 
 interface Props {
   users: Users[];
@@ -9,32 +12,23 @@ interface Props {
 
 export function UserList({ users, showColors, handleDelete, sortBy }: Props) {
   return (
-    <table>
-      <thead>
+    <table className="table-user">
+      <thead className="table-user-header">
         <tr>
           <th>foto</th>
           <th
-            style={{
-              cursor: "pointer",
-            }}
             onClick={() => {
               sortBy("name");
             }}>
             nombre
           </th>
           <th
-            style={{
-              cursor: "pointer",
-            }}
             onClick={() => {
               sortBy("last-name");
             }}>
             apellido
           </th>
           <th
-            style={{
-              cursor: "pointer",
-            }}
             onClick={() => {
               sortBy("country");
             }}>
@@ -50,18 +44,26 @@ export function UserList({ users, showColors, handleDelete, sortBy }: Props) {
           return (
             <tr key={index} style={{ backgroundColor: color }}>
               <td data-testing="user-img">
-                <img src={user.picture} alt={user.name} />
+                <img
+                  className="user-img-data"
+                  src={user.picture}
+                  alt={user.name}
+                />
               </td>
               <td data-testing="user-name">{user.name}</td>
               <td data-testing="user-lastName">{user.name}</td>
               <td data-testing="user-country">{user.country}</td>
               <td data-testing="user-delete-button">
-                <button
+                <Button
+                  className="delete"
                   onClick={() => {
                     handleDelete(user.loginID);
                   }}>
-                  borrar
-                </button>
+                  <div className="button-delete">
+                    <Trash />
+                    <p>borrar</p>
+                  </div>
+                </Button>
               </td>
             </tr>
           );

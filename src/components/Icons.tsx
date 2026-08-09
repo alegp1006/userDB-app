@@ -2,12 +2,12 @@ export const World = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="1em"
-      height="1em"
+      width="24px"
+      height="24px"
       viewBox="0 0 24 24">
       <path d="M0 0h24v24H0z" fill="none" />
       <path
-        fill="currentColor"
+        fill="green"
         d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93c0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2"
       />
     </svg>
@@ -18,8 +18,8 @@ export const UpDownArrow = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="1em"
-      height="1em"
+      width="24px"
+      height="24px"
       viewBox="0 0 24 24">
       <path d="M0 0h24v24H0z" fill="none" />
       <path
@@ -50,8 +50,8 @@ export const Restore = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="1em"
-      height="1em"
+      width="24px"
+      height="24px"
       viewBox="0 0 24 24">
       <path d="M0 0h24v24H0z" fill="none" />
       <path
@@ -61,3 +61,35 @@ export const Restore = () => {
     </svg>
   );
 };
+
+export function Search({ width, height }: { width: string; height: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={`${width}`}
+      height={`${height}`}
+      viewBox="0 0 24 24">
+      <rect width="24" height="24" fill="none" />
+      <path
+        fill="currentColor"
+        d="M9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l5.6 5.6q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-5.6-5.6q-.75.6-1.725.95T9.5 16m0-2q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14"
+      />
+    </svg>
+  );
+}
+
+export function Trash() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24px"
+      height="24px"
+      viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path
+        fill="currentColor"
+        d="M7 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2h4a1 1 0 1 1 0 2h-1.069l-.867 12.142A2 2 0 0 1 17.069 22H6.93a2 2 0 0 1-1.995-1.858L4.07 8H3a1 1 0 0 1 0-2h4zm2 2h6V4H9zM6.074 8l.857 12H17.07l.857-12zM10 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1m4 0a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1"
+      />
+    </svg>
+  );
+}

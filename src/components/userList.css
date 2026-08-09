@@ -1,0 +1,36 @@
+.table-user {
+  width: 100%;
+  max-width: 1200px;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-user-header {
+  padding: 10px;
+  margin: 0;
+}
+.table-user th {
+  padding: 20px;
+  cursor: pointer;
+}
+.table-user-header tr {
+  margin: 10px;
+  border-bottom: 2px solid #555;
+}
+.user-img-data {
+  border-radius: 50%;
+}
+
+.delete {
+  cursor: pointer;
+  padding: 5px 8px;
+  border: 2px solid #a82a2a;
+  border-radius: 10px;
+  background-color: #a82a2a;
+  color: #eee;
+}
+
+.delete:hover {
+  box-shadow: 0 0 4px #a82a2a;
+}
