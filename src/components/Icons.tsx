@@ -93,3 +93,20 @@ export function Trash() {
     </svg>
   );
 }
+
+export function DB() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0z" fill="none" />
+      <g fill="none" stroke="#38a919" stroke-width="1.5">
+        <path d="M5 12v6s0 3 7 3s7-3 7-3v-6" />
+        <path d="M5 6v6s0 3 7 3s7-3 7-3V6" />
+        <path d="M12 3c7 0 7 3 7 3s0 3-7 3s-7-3-7-3s0-3 7-3Z" />
+      </g>
+    </svg>
+  );
+}

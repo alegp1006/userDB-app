@@ -9,7 +9,6 @@ export async function getUsers() {
       country: u.location.country,
       loginID: u.login.uuid,
     }));
-
     return users;
   } catch (e: any) {
     throw new Error("error to fetch data from the api " + e.message);

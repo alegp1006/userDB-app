@@ -17,8 +17,9 @@
 }
 
 .header {
+  padding: 10px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 6px;
